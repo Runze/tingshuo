@@ -1,0 +1,242 @@
+/* Plotly plot */
+.plotly {
+  height: 50vw;
+  width: 90%;
+}
+
+@media (max-width: 978px) {
+  .plotly {
+    height: 100vw;
+    width: 100vw;
+  }
+}
+
+/* No gutters between grid */
+.row.no-pad {
+  margin-right:0;
+  margin-left:0;
+}
+.row.no-pad > [class*='col-'] {
+  padding-right:0;
+  padding-left:0;
+}
+.row.buffer {
+  margin-top:20px;
+  margin-right:10px;
+}
+
+/* Apply padding at the bottom of images to ensure the same height */
+.image{
+    position:relative;
+    overflow:hidden;
+    padding-bottom:100%;
+}
+.image img{
+    position:absolute;
+}
+
+/* Centered text */
+.centered-text-over-grid {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.centered-text-over-grid-w-transition {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: -10%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.top-left-text-over-grid {
+  position: absolute;
+  top: 23%;
+  left: 12%;
+  -webkit-transform: translate(-10%, -10%);
+  transform: translate(-10%, -10%);
+}
+
+.text-background {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Podcast artwork on the corner of the plot */
+.corner-image {
+  position: absolute;
+}
+
+/* Shadow effect */
+.shadow {
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+}
+
+/* Centered image */
+.centered-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Image filter */
+.img-filter {
+    -webkit-filter: opacity(75%);
+    filter: opacity(75%);
+}
+
+.img-filter-2 {
+    -webkit-filter: opacity(90%);
+    filter: opacity(90%);
+}
+
+/* Default font */
+body {
+  margin: 0;
+  font-family: "PT Serif", "Times New Roman", Times;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #1f0909;
+  text-align: left;
+  background-color: #f3f2ee;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+time {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+hr {
+	border-color: #c5c5c5;
+}
+
+.frontpage-text {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.frontpage-text > * {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 978px) {
+  .frontpage-text {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.article {
+  padding-left: 200px;
+  padding-right: 200px;
+}
+
+.article > * {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 978px) {
+  .article {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.caption {
+  color: #696969;
+  text-align: center;
+  font-size: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  padding: 10px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 100px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #f4f1e6;
+}
+
+@media (max-width: 978px) {
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background-color: transparent;
+  }
+}
+
+.footer-text {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 14px;
+  margin: 20px;
+  color: #696969;
+}
+
+.row-flex {
+  display: flex;
+}
+
+.col-v-centered {
+  display: flex;
+  align-items: center;
+}
+
+/* Fade in a box*/
+
+.img-fade {
+  opacity: 1;
+  display: block;
+  /*width: 100%;*/
+  /*height: auto;*/
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.card:hover .img-fade {
+  opacity: 0.3;
+}
+
+.card:hover .centered-text-over-grid-w-transition {
+  opacity: 1;
+}

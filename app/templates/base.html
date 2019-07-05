@@ -1,0 +1,56 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    Tingshuo
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #f4f1e6">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="{{ url_for('index') }}" class="navbar-left"><img src="/static/logo.png" style="height:50px;"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('posts') }}">Blog</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <body style="padding-top:70px; padding-bottom:70px;">
+            {# application content needs to be provided in the app_content block #}
+            {% block app_content %}{% endblock %}
+        </body>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-text">
+                {% block footer %}
+                    <p>&copy; Tingshuo 2019</p>
+                {% endblock %}
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet"/>
+    <link href="{{url_for('.static', filename='custom.css')}}" rel="stylesheet"/>
+    <link href="/static/logo-small.ico" rel="shortcut icon"/>
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/plyr/3.1.0/plyr.css" />
+{% endblock styles %}

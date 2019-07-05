@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    {% for podcast in podcasts %}
+	    <div class="row">
+	        <div class="col-md-3">
+	            <img src="{{ podcast.artwork }}" width="90%" height="90%">
+	        </div>
+	        <div class="col-md-9">
+	            <a href="/podcasts/{{ podcast.podcast_id }}" target="_blank">
+	            	<h2>{{ podcast.im_name_label }}</h2>
+	            </a>
+	            <div><p>
+                <a href="{{ podcast.link_attributes_href }}" target="_blank">iTunes</a>
+	                | 
+	                <a href="{{ podcast.feedurl }}" target="_blank">Feed</a>
+	            </p></div>
+	            <div><p>{{ podcast.summary_label }}</p></div>
+
+	            {% if podcast.summary_label_en_cleaned is defined %}
+	                <div><p><font color="grey">{{ podcast.summary_label_en_cleaned }}</font></p></div>
+	            {% endif %}
+
+	            <h4>Top phrases used in the description</h4>
+	            {% for phrase, color in podcast_id_to_phrase_count[podcast.podcast_id | string] %}
+	                <font color="{{ color }}"><b>{{ phrase }}</b></font>
+	                {% if not loop.last %}
+	                	<font color="grey">/</font>
+	                {% endif %}
+	            {% endfor %}
+	        </div>
+	    </div>
+	    <hr>
+	{% endfor %}
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+    <p>The listed podcasts are pulled from iTunes Store; the non-English content is translated by Google Translate (without human correction).</p>
+{% endblock %}

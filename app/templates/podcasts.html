@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <div class="row row-flex">
+        <div class="col-sm-8 col-v-centered">
+            <p style="font-size:19px;">
+                Laid out below is a map of podcasts,
+                <br>Whose distance is measured by words not exterior contrasts.
+                <br>Open one up to discover a voice from a distant nation,
+                <br>With stories to tell that transcend space and awkward translation.
+            </p>
+        </div>
+        <div class="col-sm-4">
+            <img class="img-responsive" src="/static/headphones.png">
+        </div>
+    </div>    
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                {{ plot_div | safe }}
+                <div id="hoverinfo" class="corner-image" style="width:15vw; height:15vw;"></div>
+                {{ js_callback | safe }}
+            </div>
+        </div>
+    </div>
+
+	<div class="container">
+        <div class="row">
+	       {% for country, podcasts in podcasts_per_country.items() %}
+                <div class="col-sm-3">
+                    <div class="row buffer">
+                        <a href="{{ country }}" target="_blank">
+                            <div class="row no-pad">
+                                {% for podcast in podcasts[:9] %}
+                                    <div class="col-xs-4 col-sm-4">
+                                        <div class="image">
+                                            <img class="img-filter img-responsive" src="{{ podcast.artwork }}">
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="centered-text-over-grid">
+                                <div class="text-background">
+                                    <h3>{{ country }}</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+    <p>The listed podcasts are pulled from iTunes Store; the non-English content is translated by Google Translate (without human correction).</p>
+{% endblock %}

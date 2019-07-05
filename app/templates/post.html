@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    
+    <div class='article'>
+	    <div class='header'>
+	    	<h1>{{ post.title }}</h1>
+	    </div>
+	    <hr>
+    
+    	<div>
+	    	<i class="fa fa-calendar fa-fw"></i>
+	    	<time>{{ post.date }}</time>
+		   	<br>
+	    	<i class="fa fa-pencil fa-fw"></i>
+	    	<time>{{ post.author }}</time>
+	    </div>
+	    <!-- <img src="/static/{{post.path.replace('posts/', '')}}.png" width="80%" class="centered-image">
+	    <div class="caption">{{post.image_caption}}</div> -->
+		<p>{{ post.html | safe }}</p>
+	</div>
+
+{% endblock %}

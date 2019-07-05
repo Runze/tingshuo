@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <div class="frontpage-text">
+        <div class="row">
+            <div class="col-sm-12">
+                <img src="/static/voice.png" style="width:100%">
+                <div class="top-left-text-over-grid">
+                    <h1>Listen to the other side of the world.</h1>
+                    <!-- <br> -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <a href="{{ url_for('transcripts') }}" target="_blank">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <img src="/static/screenshot-transcript.png" class="img-fade" style="width:100%">
+                        <div class="centered-text-over-grid-w-transition">
+                            <h3>Follow a foreign podcast with transcript</h3>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="{{ url_for('podcasts') }}" target="_blank">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <img src="/static/screenshot-podcasts.png" class="img-fade" style="width:100%">
+                        <div class="centered-text-over-grid-w-transition">
+                            <h3>Discover podcasts from all over the world</h3>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+{% endblock %}

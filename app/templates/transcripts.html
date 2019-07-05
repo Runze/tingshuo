@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+	{% for transcript in transcripts %}
+		<div class="row">
+	        <div class="col-md-3">
+	            <img src="{{ transcript.podcast_artwork }}" width="90%" height="90%">
+	        </div>
+	        <div class="col-md-9">
+	            <a href="{{ url_for('transcript', name=transcript.path.replace('transcripts/', '')) }}" target="_blank">
+	            	<h2>{{ transcript.title }}</h2>
+	            </a>
+	            
+	            <div>
+			    	<i class="fa fa-calendar fa-fw"></i>
+			    	<time>{{ transcript.date }}</time>
+			    	<br>
+			   		<i class="fa fa-pencil fa-fw"></i>
+			    	<time><a href="{{ transcript.podcast_link }}" target="_blank">{{ transcript.author }}</a></time>
+			    </div>
+
+			    <p>{{ transcript.html | safe | truncate(400) }}</p>
+				<footer>
+					<a href="{{ url_for('transcript', name=transcript.path.replace('transcripts/', '')) }}" target="_blank">
+						Read more
+					</a>
+					<i class="fa fa-angle-double-right fa-fw"></i>
+				</footer>
+			</div>
+		</div>
+		<hr>
+	{% endfor %}
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+    <p>The podcasts are first processed by Google's Automatic Speech Recognition and Google Translate and are later verified and corrected by humans.</p>
+{% endblock %}

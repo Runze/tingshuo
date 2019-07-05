@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+	{% for post in posts %}	
+		<div class='article'>
+		    <div class='header'>
+		    	<h1>
+		    		<a href="{{ url_for('post', name=post.path.replace('posts/', '')) }}" target="_blank">
+				    	{{ post.title }}
+				    </a>
+		    	</h1>
+		    </div>
+		    <hr>
+	    
+	    	<div>
+		    	<i class="fa fa-calendar fa-fw"></i>
+		    	<time>{{ post.date }}</time>
+		    	<br>
+		   		<i class="fa fa-pencil fa-fw"></i>
+		    	<time>{{ post.author }}</time>
+		    </div>
+			<p>{{ post.html | safe | truncate(700) }}</p>
+			<footer>
+				<a href="{{ url_for('post', name=post.path.replace('posts/', '')) }}" target="_blank">
+					Read more
+				</a>
+				<i class="fa fa-angle-double-right fa-fw"></i>
+			</footer>
+		</div>
+	{% endfor %}
+
+{% endblock %}

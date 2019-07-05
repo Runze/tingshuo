@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    
+    <div class='article'>
+	    <div class='header'>
+	    	<h1>{{ post.title }}</h2>
+	    </div>
+	    <hr>
+	    <!-- <div class="img-filter-2"><img src="/static/about-no-background.png" width="100%"></div>
+	    <div class="caption">
+	    	<p>My questionable rendition of some of my favorite podcasts</p>
+	    	<p>From left to right, top to bottom:<br>
+	    		<a href="http://www.slate.fr/podcasts/#transfert" target="_blank">Transfert</a>, <a href="https://bowuzhi.fm/" target="_blank">博物志 (Muséelogue)</a>, <a href="http://freakonomics.com/" target="_blank">Freakonomics</a>, <a href="https://www.binge.audio/category/kiffetarace/" target="_blank">Kiffe ta race</a>, <a href="https://nouvelleecole.org/" target="_blank">Nouvelle École</a>, <a href="https://www.thisamericanlife.org/" target="_blank">This American Life</a>, <a href="https://louiemedia.com/emotions" target="_blank">Émotions</a>, <a href="http://storyfm.cn/" target="_blank">故事FM (Story FM)</a>, <a href="https://www.binge.audio/category/les-couilles-sur-la-table/" target="_blank">Les couilles sur la table</a>, <a href="https://www.bbc.co.uk/programmes/p002w557/episodes/downloads" target="_blank">BBC Discovery</a>, <a href="https://www.npr.org/sections/money/" target="_blank">Planet Money</a>, <a href="https://www.nouvellesecoutes.fr/splash/" target="_blank">Spla$h</a>.
+	    	</p>
+	    </div> -->
+	    <p>{{ post.html | safe }}</p>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <!-- Display podcast descrptions -->
+    <div class="row">
+        <div class="col-md-3">
+            <img src="{{ podcast.artwork }}" width="90%" height="90%">
+        </div>
+        <div class="col-md-9">
+            <h1>{{ podcast.im_name_label }}</h1>
+            <div><p>
+                <a href="{{ podcast.link_attributes_href }}" target="_blank">iTunes</a>
+                | 
+                <a href="{{ podcast.feedurl }}" target="_blank">Feed</a>
+            </p></div>
+            <div><p>{{ podcast.summary_label }}</p></div>
+
+            {% if podcast.summary_label_en_cleaned is defined %}
+                <div><p><font color="grey">{{ podcast.summary_label_en_cleaned }}</font></p></div>
+            {% endif %}
+
+            <h4>Top phrases used in the description</h4>
+            
+            {% for phrase, color in phrase_count %}
+                <font color="{{ color }}"><b>{{ phrase }}</b></font>
+                {% if not loop.last %}
+                    <font color="grey">/</font>
+                {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+    <hr>
+    <!-- Display per-episode descriptions -->
+    <div class="row">
+        <div class="col-md-12">
+            {% for episode in episodes %}
+
+                <h3>{{ episode.title }}</h3>
+                
+                {% if episode.title_en_cleaned is defined %}
+                    <div><p><font color="grey">{{ episode.title_en_cleaned }}</font></p></div>
+                {% endif %}
+                
+                <div>
+                    <i class="fa fa-calendar fa-fw"></i>
+                    <time>{{ episode.date }}</time>
+                </div>
+                <!-- Display audio -->
+                <div style="max-width: 400px;">
+                    <script src="//cdnjs.cloudflare.com/ajax/libs/plyr/3.1.0/plyr.min.js"></script>
+                    
+                    <audio id="player_{{ loop.index }}" controls>
+                    <!-- <audio controls> -->
+                        <source src="{{ episode.link }}">
+                        <!-- <track kind="captions" label="Original Language" srclang="en" src="/static/test.vtt" default> -->
+                    </audio>
+
+                    <script type="text/javascript">
+                        eval("const player_{{ loop.index }} = new Plyr('#player_{{ loop.index }}')");
+                    </script>
+                </div>
+                <br>
+                {% for sent in episode.summary_w_en %}
+
+                    <p>{{ sent.original }}</p>
+
+                    {% if sent.translated is defined %}
+                        <p><font color="grey">{{ sent.translated }}</font></p>
+                    {% endif %}
+                
+                {% endfor %}
+
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+    <p>The listed podcasts are pulled from iTunes Store; the non-English content is translated by Google Translate (without human correction).</p>
+{% endblock %}
