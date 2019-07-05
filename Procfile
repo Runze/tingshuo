@@ -1,1 +1,1 @@
-web: gunicorn podcasts:app
+web: gunicorn tingshuo:app
