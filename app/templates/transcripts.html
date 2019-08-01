@@ -17,6 +17,9 @@
 			    	<br>
 			   		<i class="fa fa-pencil fa-fw"></i>
 			    	<time><a href="{{ transcript.podcast_link }}" target="_blank">{{ transcript.author }}</a></time>
+			    	<br>
+			    	<i class="fa fa-language fa-fw"></i>
+			    	<time>{{ transcript.language }}</a></time>
 			    </div>
 
 			    <p>{{ transcript.html | safe | truncate(400) }}</p>
